@@ -11,7 +11,10 @@ import * as d3 from 'd3';
 import * as topojson from 'topojson';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
-//import 'tippy.js/themes/light.css'
+import us from '/public/tiles.topojson?url';
+import states from '/public/state_codes.csv?url';
+
+//Need to import the files to have them included in the build
 
 var width = 800;
 var height = 500;
@@ -39,9 +42,9 @@ var g = svg
   var path = d3.geoPath()
 	.projection(transform)
 
-const tile_data = await d3.json("/src/tiles.topojson");
+const tile_data = await d3.json(us);
 
-const state_codes = await d3.csv("/src/state_codes.csv");
+const state_codes = await d3.csv(states);
 
 
 client.config.configureEditorPanel([

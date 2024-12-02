@@ -1,8 +1,13 @@
-# React + Vite
+This is a tilegram that interacts with the sigma plugin built in Vite.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+A few build notes:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project has 2 embedded files:
+-tiles.topojson (the actual topojson svg)
+-state_codes.csv (to get the two letter abbreviations, hopefully deprecated in the future)
+
+
+Top level await is only supported in newer browsers but shouldn't be a problem. That is configured in vite.config.js
+
+To include the static files in the build (vite build), they have to be imported. Including "?url" will just pass through the path instead of actually importing the data which doesn't work natively for CSV and TOPOJSON. d3.json()/csv() will then process the data
